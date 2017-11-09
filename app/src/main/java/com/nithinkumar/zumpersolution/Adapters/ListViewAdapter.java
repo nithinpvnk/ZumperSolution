@@ -83,6 +83,15 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ListVi
         return pool.getInstance().Count();
     }
 
+    public void refreshPull(PlacePool pool)
+    {
+        if(pool.getDataCount() > getItemCount())
+        {
+
+            notifyDataSetChanged();
+        }
+    }
+
     public class ListViewHolder extends RecyclerView.ViewHolder {
         ImageView icon;
         TextView namePlate;

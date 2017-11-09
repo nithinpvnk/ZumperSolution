@@ -10,6 +10,7 @@ import java.util.List;
 public class PlacePool {
     private List<Place> pool;
     private static  PlacePool placePool;
+    private int dataCount;
 
     private PlacePool()
     {
@@ -37,5 +38,16 @@ public class PlacePool {
     public int Count()
     {
         return pool.size();
+    }
+
+    public void setDataCount( int val)
+    {
+        dataCount = val;
+
+    }
+
+    public int getDataCount()
+    {
+        return dataCount;
     }
 }

@@ -69,7 +69,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         mapScreen = (CardView) findViewById(R.id.map_screen);
         listScreen = (CardView) findViewById(R.id.list_screen);
 
-        mapScreen.setOnClickListener(new View.OnClickListener() {
+        mapScreen.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -91,7 +91,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         downloadData();
     }
 
-    private void downloadData() {
+    public void downloadData() {
         final RequestQueue mRequestQueue;
         final AppCompatActivity activity = this;
         // Instantiate the cache
@@ -123,6 +123,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                     /* process Json. */
                     JSONArray results = response.getJSONArray("results");
                     PlacePool pool = PlacePool.getInstance();
+                    pool.setDataCount(results.length());
                     for (int count = 0; count < results.length(); count++) {
                         JSONObject place = results.getJSONObject(count);
                         double lat = place.getJSONObject("geometry").getJSONObject("location").getDouble("lat");
@@ -150,7 +151,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         mRequestQueue.add(jsObjRequest);
     }
 
-    private void imgDownload(String ref, final PlacePool pool, final int pos) {
+    public void imgDownload(String ref, final PlacePool pool, final int pos) {
         final RequestQueue mRequestQueue;
         final AppCompatActivity activity = this;
         // Instantiate the cache
